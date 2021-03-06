@@ -43,4 +43,25 @@
         $stmt -> bindParam(6, $num);
         $stmt -> execute();
     }
+
+    function connectPseudo($pseudo)
+    {
+        $pdo = new PDO('mysql:host=localhost;dbname=bd_card;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+        $stmt = $pdo -> prepare('SELECT * FROM tb_user WHERE pseudo = ?');
+        $stmt -> bindParam(1,$pseudo);
+        $stmt-> execute();
+        return $stmt;
+    }
+
+    function passwordConnect($password, $pseudo)
+    {
+        $pdo = new PDO('mysql:host=localhost;dbname=bd_card;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+        $stmt = $pdo -> prepare(('SELECT mdp FROM tb_user WHERE pseudo = ?'));
+        $stmt -> bindParam(1, $pseudo);
+        $stmt -> execute();
+        $stmt = $stmt->fetch();
+        $hash = $stmt[0];
+        return password_verify($password,$hash);
+       
+    }
 ?>

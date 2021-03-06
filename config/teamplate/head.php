@@ -7,8 +7,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link href="style.css" rel="stylesheet">
-        
+        <link href="../../asset/style/style.css" rel="stylesheet">
         <title>Card's</title>
     </head>
     <body>
