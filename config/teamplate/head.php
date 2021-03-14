@@ -4,11 +4,11 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
-        <link href="../../asset/style/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="asset/style/style.css" >
         <title>Card's</title>
     </head>
     <body>
-    <div class="container">
+    

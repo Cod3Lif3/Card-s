@@ -6,8 +6,8 @@
         $chiffre = preg_match('@[0-9]@', $mdp);
         $special = preg_match('@[$%?!]@', $mdp);
         $comparaison = preg_match('/'.$conf.'/',$mdp);
-
-       if(!$majuscule || !$minuscule || !$chiffre || !$special || !$comparaison || strlen($mdp)<10 || strlen($mdp) > 20)
+//iconv_strlen/page admin gestion stock et prix
+       if(!$majuscule || !$minuscule || !$chiffre || !$special || !$comparaison || iconv_strlen($mdp)<10 || iconv_strlen($mdp) > 20)
        {
            return false;
        }

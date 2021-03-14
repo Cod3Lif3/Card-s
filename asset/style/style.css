@@ -1,4 +1,225 @@
+@font-face 
+{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: normal;
+    src:url('Jost.woff') format('woff');
+}
+ body
+ {
+     font-family: 'Jost','Arial';
+ }
+
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/*Navigateur*/
+
 .first-nav
 {
     background-color: #3A3535;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icon
+{
+    display: flex;
+    align-items: center;
+}
+
+.profile
+{
+    margin-right: 30px;
+}
+.bucket
+{
+    background-color: #AFAFAF;
+    height: 60px;
+    width: 60px;
+}
+
+.first-nav input[type=button]
+{
+    color: white;
+    background-color: #000;
+}
+
+.inscription-btn
+{
+    margin-right: 30px;
+}
+
+.second-nav a
+{
+    text-decoration: none;
+    color: #000;
+}
+.second-nav
+{
+    background-color: #E5E5E5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.second-nav ul
+{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.second-nav li
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+ /*Inscription*/
+ .title-inscription
+ {
+     position: relative;
+     left: -130px;
+ }
+form
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+ input
+ {
+    width: 250px;
+    height: 35px;
+    border: 4px solid black;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+ }
+
+ .first-form
+ {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+     
+ }
+
+ .vertical-line
+ {
+     border-left: 2px solid #000;
+     display: inline-block;
+     height: 200px;
+     margin: 0 20px 0 20px;
+ }
+ .second-form
+ {
+     display: flex;
+     flex-direction: column;
+     margin-left: 30px;
+     text-align: center;
+ }
+.radio-item
+{
+    margin-right: 15px;
+}
+ .radio-button
+ {
+     display: flex;
+     justify-content: center;
+ } 
+
+ input[type=radio]
+ {
+     width: 15px;
+     height: 15px;
+     background-color: #C4C4C4;
+     color: #C4C4C4;
+
+ }
+
+ .validate
+ {
+     position: relative;
+     top: 220px;
+     right: 420px;
+ }
+
+ small
+ {
+     position: relative;
+     top: 80px;
+     left: -130px;
+     width: 602px;
+ }
+
+ /* Accueil */
+
+ .card-container
+ {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+ }
+
+ .card
+ {
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     margin-right: 81px;
+     margin-left: 50px;
+ }
+
+ /* product */
+
+ .container-description
+ {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+ }
+
+ .descript
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 114px;
+}
+
+.descript h3
+{
+    text-align: center;
+    font-size: 24px;
+}
+
+.descript p
+{
+    width: 485px;
+    font-size: 16px;
+    margin: 0;
+}
+
+.descript input[type=button]
+{
+    color: white;
+    background-color: #000;
+}
+.Avis
+{
+    text-align: center;
+}
+.stars
+{
+    width: 25px;
+    height: 25px;
 }
