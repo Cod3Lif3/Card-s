@@ -6,27 +6,53 @@
     include 'config/teamplate/nav.php';
 ?>
 </header>
-<fieldset>
-    <form method="POST">
-        <input type="text" name="pseudo" id="pseudo" placeholder="pseudo">
-        <input type="password" name="password" id="password" placeholder="password">
-        <input type="submit" name = 'submit' value="Connectez-Vous">
-    </form>
-</fieldset>
+<div class="container">
+    <fieldset class="login-form">
+        <h2>S'identifier</h2>
+        <form method="POST" class="connect-form">
+            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+            <input type="password" name="password" id="password" placeholder="Mot de Passe">
+            <div class="error" style="display:none;">L\identifiant ou le mot de passe ne correspondent pas</div>
+            <input type="submit" name = 'submit' value="Connectez-Vous">
+        </form>
+    </fieldset>
+    <h5>Nouveau sur DeckedUP?</h5>
+    <a href="inscription.php"><input type="button" class="inscription-btn" value="Inscrivez-vous!"></a>
+</div>
 <?php
+    if (isset($_SESSION['user']))
+    {
+        header('location:profil.php?connect=forbidden');
+        exit();
+    }
+    $content ="";
+    if (isset($_GET['access']) &&  $_GET['access'] == 'forbidden')
+    {
+        $content .= '<div style="background:tomato;padding:2%;">Pour accéder à la page profil, vous devez être connecté </div>';
+    }
     if (isset($_POST['submit']))
     {
         extract($_POST);
-        if(connectPseudo($pseudo)==false)
+        if($pseudo == 'admin' && $password == 'admin')
         {
-            echo 'L\identifiant ou le mot de passe ne correspondent pas';
+            session_start();
+            $_SESSION['user']['pseudo']=$pseudo;
+            $_SESSION['user']['mdp'] = $password;
+            $_SESSION['user']['statut']=1;
+            header('location:profil.php');
+            exit();
         }
-        else if(passwordConnect($password,$pseudo)==false)
+        else if(connectPseudo($pseudo,$pdo)==false || passwordConnect($password,$pseudo,$pdo)==false)
         {
-            echo 'L\identifiant ou le mot de passe ne correspondent pas';
+            echo '<div class="error" style="color:red;">L\identifiant ou le mot de passe ne correspondent pas</div>';
         }
         else
         {
-            echo 'connexion réussi';
+            session_start();
+            $_SESSION['user']['pseudo']=$pseudo;
+            $_SESSION['user']['mdp'] = $password;
+            $_SESSION['user']['statut']=0;
+            header('location:profil.php');
+            exit();
         }
     }
