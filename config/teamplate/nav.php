@@ -10,14 +10,15 @@
             }
             else
             {
-                echo '<a href="login.php"><img src="asset/img/Profil.png" class="profil"></a>';
+                echo '<a href="login.php"><img src="asset/img/Profil.png" class="profil" alt="profil icon"></a>';
             }
 
         ?>
         <div class="bucket">
-            <a>
+            <a href="bucket.php">
                <img src="asset/img/bucket.png" alt="bucket icon" class="bucket-icon">
             </a>
+            <h1>1</h1>
         </div>
     </div>
 </nav>
@@ -25,9 +26,9 @@
 <nav class="second-nav">
     <a href="index.php"><h1>DeckedUP</h1></a>
     <ul>
-        <a><li class="nav-item" id="NBA"> Cartes NBA</li></a>
-        <a><li class="nav-item" id="NFL">Cartes NFL</li></a>
-        <a><li class="nav-item" id="about">A propos</li></a>
-        <a><li class="nav-item" id="back">Retours</li></a>
+        <li class="nav-item" id="NBA"> <a>Cartes NBA</a></li>
+        <li class="nav-item" id="NFL"><a>Cartes NFL</a></li>
+        <li class="nav-item" id="about"><a>A propos</a></li>
+        <li class="nav-item" id="back"><a>Retours</a></li>
     </ul>
 </nav>
