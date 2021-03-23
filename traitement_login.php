@@ -13,8 +13,7 @@
     {
         extract($_POST);
         if($pseudo == 'admin' && $password == 'admin')
-        {
-            session_start();
+        { 
             $_SESSION['user']['pseudo']=$pseudo;
             $_SESSION['user']['mdp'] = $password;
             $_SESSION['user']['statut']=1;
@@ -27,7 +26,6 @@
         }
         else
         {
-            session_start();
             $_SESSION['user']['pseudo']=$pseudo;
             $_SESSION['user']['mdp'] = $password;
             $_SESSION['user']['statut']=0;
