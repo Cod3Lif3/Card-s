@@ -1,0 +1,144 @@
+/**************************************************************************************/
+/* Nav */
+/**************************************************************************************/
+.first-nav {
+  background-color: #3A3535;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.first-nav .first-nav_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.first-nav .first-nav_field .profil {
+  margin-right: 30px;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo {
+  text-decoration: none;
+  margin-right: 30px;
+  color: #7FFF00;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo:visited {
+  text-decoration: none;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo:hover {
+  color: white;
+}
+
+.first-nav .first-nav_field .bucket {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #AFAFAF;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.first-nav .first-nav_field .bucket .bucket-icon {
+  margin: 0 15px 0 0;
+}
+
+.second-nav {
+  background-color: #E5E5E5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.second-nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+.second-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+}
+
+.second-nav ul li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  #back {
+    display: none;
+  }
+  #about {
+    display: none;
+  }
+}
+
+/**************************************************************************************/
+/* Footer */
+/**************************************************************************************/
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+  background-color: #E5E5E5;
+  width: 100%;
+}
+
+footer .footer_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  margin: 0 20px 0 20px;
+}
+
+footer .footer_field ul {
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=template.css.map */

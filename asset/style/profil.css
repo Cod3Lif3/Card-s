@@ -1,0 +1,35 @@
+.statut {
+  color: chartreuse;
+  font-weight: bold;
+}
+
+.avatar {
+  background-color: #C4C4C4;
+  width: 280px;
+  height: 280px;
+}
+
+.avatar-btn {
+  width: 280px;
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.info-membre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 15px;
+}
+
+.destroy-btn {
+  width: 280px;
+  background-color: #000;
+  color: #FFFFFF;
+  margin-top: 30px;
+}
+/*# sourceMappingURL=profil.css.map */

@@ -1,0 +1,24 @@
+.bucket-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bucket-item .bucket-item_text {
+  margin-left: 50px;
+}
+
+.bucket-item .bucket-item_text .bucket-item_btn {
+  height: 43px;
+  width: 200px;
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #FF7A00;
+}
+/*# sourceMappingURL=bucket.css.map */

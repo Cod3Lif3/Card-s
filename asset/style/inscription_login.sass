@@ -1,0 +1,85 @@
+/**************************************************************************************/
+/* Inscription */
+/**************************************************************************************/
+
+.inscription-form
+    display: flex
+    justify-content: center
+    width: 800px
+    flex-wrap: wrap
+    .first-form
+        display: flex
+        flex-direction: column
+        margin-right: 30px
+    .second-form
+        display: flex
+        flex-direction: column
+        margin-left: 30px
+        text-align: center
+    input
+        width: 250px
+        height: 35px
+        border: 4px solid black
+        margin-bottom: 16px
+        box-sizing: border-box
+    .validate
+        margin-top: 16px
+        width: 250px
+        height: 35px
+        border: 2px solid #000
+        background-color: #000
+        color: #FFFFFF
+.radio-btn-container
+    display: flex
+    justify-content: center
+    .radio-item
+        margin-right: 15px
+    input[type=radio]
+        width: 15px
+        height: 15px
+        background-color: #C4C4C4
+        color: #C4C4C4
+
+
+@media (max-width:768px)
+    .inscription-form
+        flex-direction: column
+        align-items: center
+        .first-form
+            margin: 0
+        .second-form
+            margin: 0
+        .small
+            max-width: 768px
+    
+
+/**************************************************************************************/
+/* Login */
+/**************************************************************************************/
+
+.login-form
+    margin-top: 50px
+    padding: 20px 20px 20px 20px
+    .connect-form
+        display: flex
+        flex-direction: column
+        align-items: center
+        input
+            width: 250px
+            height: 35px
+            border: 4px solid black
+            margin-bottom: 16px
+            box-sizing: border-box
+        .connect-btn
+            width: 250px
+            height: 35px
+            border: 2px solid #000
+            background-color: #000
+            color: #FFFFFF
+
+.inscription-btn
+    width: 250px
+    height: 35px
+    border: 2px solid #000
+    background-color: #3A3535
+    color: #FFFFFF
