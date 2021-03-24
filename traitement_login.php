@@ -22,7 +22,7 @@
         }
         else if(connectPseudo($pseudo,$pdo)==false || passwordConnect($password,$pseudo,$pdo)==false)
         {
-            echo '<div class="error" style="color:red;">L\identifiant ou le mot de passe ne correspondent pas</div>';
+            $content = '<div class="error" style="color:red;">L\'identifiant ou le mot de passe ne correspondent pas</div>';
         }
         else
         {

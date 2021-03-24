@@ -3,7 +3,7 @@
 // connexion PDO
 try
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=bd_card;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+    $pdo = new PDO('mysql:host=localhost;dbname=card_bd;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
 }
 catch(Exception $e)
 {

@@ -1,19 +1,29 @@
 <?php
-    include 'config/teamplate/head.php';
+include 'config/teamplate/head.php';
+include 'traitement_inscription.php';
 ?>
 <header>
-<?php
+    <?php
     include 'config/teamplate/nav.php';
-?>
+    ?>
 </header>
 <div class="container">
     <h2 class="title-inscription">Inscrivez-vous</h2>
     <form method="POST" class="inscription-form">
         <div class="first-form">
+            <?php
+            echo $content_pseudo;
+            ?>
             <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+            <?php
+            echo $content_mail;
+            ?>
             <input type="mail" name="email" id="email" placeholder="Mail">
             <input type="password" name="password" id="mdp" placeholder="Entrez votre mot de passe">
-            <input type="password" name="confpass" id="confmdp" placeholder="Confirmer votre mot de passe"> 
+            <input type="password" name="confpass" id="confmdp" placeholder="Confirmer votre mot de passe">
+            <?php
+            echo $content_mdp;
+            ?>
         </div>
         <span class="vertical-line"></span>
         <div class="second-form">
@@ -35,53 +45,26 @@
                     <input type="radio" name="genre" value="Autre" id="autre" class="radio">
                 </div>
             </div>
+            <?php
+            echo $content_gender;
+            ?>
             <input type="text" name="adresse" id="adresse" placeholder="Adresse">
-            <input type="tel" name="tel" id="tel"  placeholder="Téléphone">
+            <?php
+            echo $content_tel;
+            ?>
+            <input type="tel" name="tel" id="tel" placeholder="Téléphone">
         </div>
-        <input type="submit" name="submit" value="S'inscrire" class="validate"> 
+        <input type="submit" name="submit" value="S'inscrire" class="validate">
         <small>En cliquant sur S’inscrire, vous acceptez nos Conditions générales.Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre Politique d’utilisation des données et comment nous utilisons les cookies et autres technologies similaires en consultant notre Politique d’utilisation des cookies.Vous recevrez peut-être des notifications par texto de notre part et vous pouvez à tout moment vous désabonner.</small>
     </form>
-   
-    
-   
+
+
+
 </div>
 <footer>
     <?php
     include "config/teamplate/footer.php"
     ?>
 </footer>
-<?php
-    if (isset($_POST['submit']))
-    {
-        extract($_POST);
-        if(check_pseudo($pseudo,$pdo) == false)
-        {
-            $message = 'Ce pseudo n\'est pas disponible'; 
-        }
-        else if (strlen($tel)!= 9 || filter_var($tel,FILTER_VALIDATE_INT)==false)
-        {
-            $message = 'Le numéro est incorrect';
-        }
-        else if ((filter_var($email,FILTER_VALIDATE_EMAIL)==false) || (preg_match('#yopmail\.com$#',$email))) //Vérification de la validité de l'adresse mail ainsi qu'isolation des emails poubelles
-        {
-            echo 'Adresse email incorrect';
-        }
-        else if (check_mdp($password, $confpass) == false)
-        {
-            echo 'Votre mot de passe est incorrect ou ne correspond pas';
-        }
-        else if ($genre != 'Femme'&& $genre != 'Homme' && $genre != 'Autre')
-        {
-            echo "Veuillez sélectionner un genre";
-        }
-        else
-        {
-            $password=password_hash($password, PASSWORD_DEFAULT);
-            addUser($pdo,$pseudo,$email,$password,$genre,$adresse,$tel,0);
-        }
-    
-    }
-?>
-
 </body>
 </html>

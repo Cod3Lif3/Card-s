@@ -16,15 +16,13 @@
     }
 
     function check_pseudo($pseudo,$pdo){
-        $result = $pdo ->query('SELECT * FROM tb_user');
-        $user = $result->fetch(PDO::FETCH_ASSOC);
-        if ($user == $pseudo){
-            return false;
+        $stmt = $pdo ->prepare('SELECT pseudo FROM tb_user');
+        $stmt -> execute();
+        $result = $stmt -> fetchAll(PDO::FETCH_NUM);
+        for($i=0;$i<sizeof($result);$i++){
+            $check = ($result[$i][0] == $pseudo) ? false : true;
         }
-        else
-        {
-            return true;
-        }
+        return $check;
     }
 
     function addUser($pdo,$pseudo,$email,$mdp,$genre,$adresse,$num,$statut){
@@ -88,4 +86,3 @@
         $stmt = $stmt->fetch();
         return $stmt[$string];
     }
-?>

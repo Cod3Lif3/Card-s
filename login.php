@@ -14,7 +14,9 @@
         <form method="POST" class="connect-form">
             <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
             <input type="password" name="password" id="password" placeholder="Mot de Passe">
-            <div class="error" style="display:none;">L\identifiant ou le mot de passe ne correspondent pas</div>
+            <?php
+            echo $content;
+            ?>
             <input type="submit" name = 'submit' value="Connectez-Vous" class="connect-btn">
         </form>
     </fieldset>
