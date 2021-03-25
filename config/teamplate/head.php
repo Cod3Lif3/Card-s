@@ -18,5 +18,4 @@
         <link rel="stylesheet" href="asset/style/profil.css">
         <title>DeckedUP</title>
     </head>
-    <body>
     

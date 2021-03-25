@@ -18,8 +18,9 @@ if (isset($_POST['submit'])) {
     } else if ($genre != 'Femme' && $genre != 'Homme' && $genre != 'Autre') {
         $content_gender = '<div class="error" style="color:red;">Veuillez sélectionner un genre</div>';
     } else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
         addUser($pdo, $pseudo, $email, $password, $genre, $adresse, $tel, 0);
+        header('location:login.php');
+        exit();
     }
 }
 ?>

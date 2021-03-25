@@ -4,11 +4,10 @@
         header('location:profil.php?connect=forbidden');
         exit();
     }
+    
     $content ="";
-    if (isset($_GET['access']) &&  $_GET['access'] == 'forbidden')
-    {
-        $content .= '<div style="background:tomato;padding:2%;">Pour accéder à la page profil, vous devez être connecté </div>';
-    }
+    
+    $content = (isset($_GET['access']) &&  $_GET['access'] == 'forbidden') ? '<div style="background:tomato;padding:2%;">Pour accéder à la page profil, vous devez être connecté </div>' : "" ;
     if (isset($_POST['submit']))
     {
         extract($_POST);
@@ -20,7 +19,7 @@
             header('location:profil.php');
             exit();
         }
-        else if(connectPseudo($pseudo,$pdo)==false || passwordConnect($password,$pseudo,$pdo)==false)
+        else if(check_pseudo($pseudo,$pdo)==true || passwordConnect($password,$pseudo,$pdo)==false)
         {
             $content = '<div class="error" style="color:red;">L\'identifiant ou le mot de passe ne correspondent pas</div>';
         }
