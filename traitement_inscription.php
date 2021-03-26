@@ -1,9 +1,15 @@
 <?php
+session_start();
 $content_pseudo = "";
 $content_mail = "";
 $content_mdp = "";
 $content_gender = "";
 $content_tel = "";
+if (isset($_SESSION['user']))
+    {
+        header('location:profil.php?connect=forbidden');
+        exit();
+    }
 if (isset($_POST['submit'])) {
     extract($_POST);
     if (check_pseudo($pseudo, $pdo) == false) {

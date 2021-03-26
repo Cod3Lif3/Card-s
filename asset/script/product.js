@@ -1,23 +1,35 @@
-let firstChoice = document.getElementById("img1");
-let secondChoice = document.getElementById("img2");
-let firstPict = document.getElementById("LBJ1");
-let secondPict = document.getElementById("LBJ2");
-let thirdPict = document.getElementById("LBJ3");
+let firstPict = document.getElementById("first_pict");
+let secondPict = document.getElementById("second_pict");
+let thirdPict = document.getElementById("third_pict");
+let next_btn = document.getElementById("next-btn");
+let pre_btn = document.getElementById("previous-btn");
 
 
-
-
-if (firstChoice.checked === true)
-{
-    secondChoice.checked = false;
-    firstPict.style.display =( "block");
-    secondPict.style.display = ("none");
-    thirdPict.style.display = ("none");
-}
-else if(secondChoice.checked)
-{
-    firstChoice.checked = false;
-    firstPict.style.display =( "none");
-    secondPict.style.display = ("display");
-    thirdPict.style.display = ("none");
-}
+next_btn.addEventListener('click', () =>{
+    if(firstPict.style.display == "block"){
+        firstPict.style.display =("none");
+        secondPict.style.display =("block");
+    }
+    else if (secondPict.style.display == "block"){
+        secondPict.style.display =("none");
+        thirdPict.style.display = ("block");
+    }
+    else{
+        thirdPict.style.display = ("none");
+        firstPict.style.display =("block");
+    }
+});
+pre_btn.addEventListener('click', () =>{
+    if(firstPict.style.display == "block"){
+        firstPict.style.display =("none");
+        thirdPict.style.display = ("block");
+    }
+    else if (secondPict.style.display == "block"){
+        secondPict.style.display =("none");
+        firstPict.style.display =("block");
+    }
+    else{
+        thirdPict.style.display = ("none");
+        secondPict.style.display =("block");
+    }
+})

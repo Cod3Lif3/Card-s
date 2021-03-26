@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include 'config/teamplate/head.php';
     include 'traitement_login.php';
 ?>
@@ -15,7 +14,7 @@
             <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
             <input type="password" name="password" id="password" placeholder="Mot de Passe">
             <?php
-            echo $content;
+                echo $content;
             ?>
             <input type="submit" name = 'submit' value="Connectez-Vous" class="connect-btn">
         </form>

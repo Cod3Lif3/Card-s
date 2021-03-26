@@ -1,0 +1,684 @@
+/**************************************************************************************/
+/* General */
+/**************************************************************************************/
+@font-face {
+  font-family: 'MPLUSRounded1c-Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local("MPlusRounded"), url("asset/font/MPLUSRounded1c-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'Lato-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Lato"), url("asset/font/Lato-Regular.ttf") format("ttf");
+}
+
+body {
+  font-family: 'Lato','Arial';
+  margin: 0;
+}
+
+body h1, body h2 {
+  font-family: MPlusRounded;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .vertical-line {
+  border-left: 2px solid #000;
+  height: 200px;
+  margin: 0 20px 0 20px;
+}
+
+.container .aff-info {
+  padding: 10px 10px 10px 10px;
+  border: 2px solid black;
+  width: 300px;
+}
+
+/**************************************************************************************/
+/* Nav */
+/**************************************************************************************/
+.first-nav {
+  background-color: #3A3535;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.first-nav .first-nav_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.first-nav .first-nav_field .profil {
+  margin-right: 30px;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo {
+  text-decoration: none;
+  margin-right: 30px;
+  color: #7FFF00;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo:visited {
+  text-decoration: none;
+}
+
+.first-nav .first-nav_field .nav-user_pseudo:hover {
+  color: white;
+}
+
+.first-nav .first-nav_field .bucket {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #AFAFAF;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.first-nav .first-nav_field .bucket .bucket-icon {
+  margin: 0 15px 0 0;
+}
+
+.second-nav {
+  background-color: #E5E5E5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.second-nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+.second-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+}
+
+.second-nav ul li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/**************************************************************************************/
+/* Footer */
+/**************************************************************************************/
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+  background-color: #E5E5E5;
+  width: 100%;
+}
+
+footer .footer_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  margin: 0 20px 0 20px;
+}
+
+footer .footer_field ul {
+  list-style: none;
+}
+
+/**************************************************************************************/
+/* index */
+/**************************************************************************************/
+.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card-container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  margin-right: 31px;
+  margin-left: 50px;
+}
+
+/**************************************************************************************/
+/* Login */
+/**************************************************************************************/
+.login-form {
+  margin-top: 50px;
+  padding: 20px 20px 20px 20px;
+}
+
+.login-form .connect-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-form .connect-form input {
+  width: 250px;
+  height: 35px;
+  border: 4px solid black;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.login-form .connect-form .connect-btn {
+  width: 250px;
+  height: 35px;
+  border: 2px solid #000;
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.inscription-btn {
+  width: 250px;
+  height: 35px;
+  border: 2px solid #000;
+  background-color: #3A3535;
+  color: #FFFFFF;
+}
+
+/**************************************************************************************/
+/* Inscription */
+/**************************************************************************************/
+.inscription-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 800px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.inscription-form .first-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 30px;
+}
+
+.inscription-form .second-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.inscription-form input {
+  width: 250px;
+  height: 35px;
+  border: 4px solid black;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.inscription-form .validate {
+  margin-top: 16px;
+  width: 250px;
+  height: 35px;
+  border: 2px solid #000;
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.radio-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.radio-btn-container .radio-item {
+  margin-right: 15px;
+}
+
+.radio-btn-container input[type=radio] {
+  width: 15px;
+  height: 15px;
+  background-color: #C4C4C4;
+  color: #C4C4C4;
+}
+
+/**************************************************************************************/
+/* Product */
+/**************************************************************************************/
+.container-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-description .container-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-description .container-img .second-card-img, .container-description .container-img .third-card-img {
+  display: none;
+}
+
+.container-description .container-img .img-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.container-description .container-img .btn {
+  border: none;
+  font-size: 1rem;
+  height: 40px;
+  width: 40px;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-box-shadow: inset 10px 10px 10px -6px #C4C4C4, inset -10px -10px 10px -6px #C4C4C4;
+          box-shadow: inset 10px 10px 10px -6px #C4C4C4, inset -10px -10px 10px -6px #C4C4C4;
+}
+
+.container-description .container-img .btn:focus {
+  outline: none;
+}
+
+.container-description .descript {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 114px;
+}
+
+.container-description .descript h3 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.container-description .descript p {
+  width: 485px;
+  font-size: 16px;
+  margin: 0;
+}
+
+.container-description .descript input[type=button] {
+  width: 250px;
+  height: 35px;
+  color: white;
+  background-color: #3A3535;
+}
+
+.Avis {
+  text-align: center;
+}
+
+.Avis .stars {
+  width: 25px;
+  height: 25px;
+}
+
+/**************************************************************************************/
+/* Profil */
+/**************************************************************************************/
+.statut {
+  color: chartreuse;
+  font-weight: bold;
+}
+
+.avatar {
+  background-color: #C4C4C4;
+  width: 280px;
+  height: 280px;
+}
+
+.avatar-btn {
+  width: 280px;
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.info-membre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 15px;
+}
+
+.destroy-btn {
+  width: 280px;
+  background-color: #000;
+  color: #FFFFFF;
+  margin-top: 30px;
+}
+
+/**************************************************************************************/
+/* Admin */
+/**************************************************************************************/
+.search-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 450px;
+  position: relative;
+  left: -500px;
+  margin-top: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-item .search-bar {
+  height: 40px;
+  width: 400px;
+}
+
+.search-item .search-icon {
+  width: 30px;
+}
+
+.product-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.product-container .product-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 15px;
+}
+
+.product-container .product-item .product-btn_img {
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.product-container .product-item .info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  margin-top: 30px;
+}
+
+.product-container .product-item .info-container .product-btn {
+  width: 324px;
+  color: #FFFFFF;
+  background-color: #000;
+}
+
+/**************************************************************************************/
+/* Bucket */
+/**************************************************************************************/
+.bucket-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bucket-item .bucket-item_text {
+  margin-left: 50px;
+}
+
+.bucket-item .bucket-item_text .bucket-item_btn {
+  height: 43px;
+  width: 200px;
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #FF7A00;
+}
+
+/**************************************************************************************/
+/* Responsive */
+/**************************************************************************************/
+@media (max-width: 768px) {
+  .aff-info {
+    padding: 10px 10px 10px 10px;
+    border: 2px solid black;
+    width: 200px;
+  }
+  /****************/
+  /* Inscription */
+  /***************/
+  .inscription-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .inscription-form .first-form {
+    margin: 0;
+  }
+  .inscription-form .vertical-line {
+    display: none;
+  }
+  .inscription-form .second-form {
+    margin: 0;
+  }
+  .inscription-form .small {
+    max-width: 768px;
+  }
+  /****************/
+  /* Nav */
+  /***************/
+  #back {
+    display: none;
+  }
+  #about {
+    display: none;
+  }
+  /****************/
+  /* footer */
+  /***************/
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  /****************/
+  /* index */
+  /***************/
+  .card-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  /****************/
+  /* product */
+  /***************/
+  .container-description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .container-description .descript {
+    margin: 0;
+  }
+  .container-description p {
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    font-size: 12px;
+  }
+  .Avis {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  /****************/
+  /*Admin */
+  /***************/
+  .product-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .search-item {
+    left: 0px;
+    width: 300px;
+  }
+  .search-item .search-bar {
+    width: 250px;
+  }
+  /****************/
+  /* Bucket */
+  /***************/
+  .bucket-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .bucket-item .bucket-item_text {
+    margin: 0;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=style.css.map */

@@ -62,6 +62,7 @@
     }
 
     /**
+     * function which verify if the password enter match with the database password
      * @param string $password The user's password.
      * @param string $pseudo The user's pseudo.
      * @param object $pdo Database connection.
@@ -78,29 +79,20 @@
     }
     
     
-    function affichageTel($pdo,$pseudo)
-    {
-        $stmt = $pdo -> prepare(('SELECT tel FROM tb_user WHERE pseudo = ?'));
-        $stmt -> bindParam(1, $pseudo);
+    /**
+     * function which show the requested data in the user table 
+     * @param object $pdo Database connection.
+     * @param string $pseudo The user's pseudo.
+     * @param string $user_data The field in Database we want. 
+     * 
+     * @return string Returns the data researched if exists.
+     */
+    function affichageUser($pdo,$pseudo, $user_data){
+        $stmt = $pdo -> prepare(('SELECT * FROM tb_user WHERE pseudo = :pseudo'));
+        $stmt -> bindParam(':pseudo', $pseudo);
         $stmt -> execute();
-        $stmt = $stmt->fetch();
-        return $stmt[0];
-    }
-    function affichageAdresse($pdo,$pseudo)
-    {
-        $stmt = $pdo -> prepare(('SELECT adresse FROM tb_user WHERE pseudo = ?'));
-        $stmt -> bindParam(1, $pseudo);
-        $stmt -> execute();
-        $stmt = $stmt->fetch();
-        return $stmt[0];
-    }
-    function affichageMail($pdo,$pseudo)
-    {
-        $stmt = $pdo -> prepare(('SELECT email FROM tb_user WHERE pseudo = ?'));
-        $stmt -> bindParam(1, $pseudo);
-        $stmt -> execute();
-        $stmt = $stmt->fetch();
-        return $stmt[0];
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result[$user_data];
     }
     function affichageProduct($pdo,$label,$string)
     {
