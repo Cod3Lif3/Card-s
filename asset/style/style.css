@@ -524,7 +524,17 @@ footer .footer_field ul {
 /**************************************************************************************/
 /* Bucket */
 /**************************************************************************************/
-.bucket-item {
+.bucket-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.bucket-container .bucket-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -533,11 +543,11 @@ footer .footer_field ul {
           align-items: center;
 }
 
-.bucket-item .bucket-item_text {
+.bucket-container .bucket-item .bucket-item_text {
   margin-left: 50px;
 }
 
-.bucket-item .bucket-item_text .bucket-item_btn {
+.bucket-container .bucket-item_btn {
   height: 43px;
   width: 200px;
   background-color: #FF7A00;

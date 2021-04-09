@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include 'config/teamplate/head.php';
 ?>
 <header>
@@ -27,11 +26,11 @@
         <h3>Avis des Utilisateurs:(101 avis)</h3>
         <h4>John Doe</h4>
         <div class="container-star">
-            <img src="asset/img/Vector.svg" class="stars">
-            <img src="asset/img/Vector.svg" class="stars">
-            <img src="asset/img/Vector.svg" class="stars">
-            <img src="asset/img/Vector.svg" class="stars">
-            <img src="asset/img/Vector (1).svg" class="stars">
+            <img src="asset/img/Vector.svg" alt="black_star-1" class="stars">
+            <img src="asset/img/Vector.svg" alt="black_star-2" class="stars">
+            <img src="asset/img/Vector.svg" alt="black_star-3" class="stars">
+            <img src="asset/img/Vector.svg" alt="black_star-4" class="stars">
+            <img src="asset/img/Vector (1).svg" alt="white_star"class="stars">
         </div>
         <p>La qualité de cette carte est bluffante, on est clairement sur du premium</p>
     </div>
