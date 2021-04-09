@@ -2,7 +2,8 @@
 // connexion PDO
 try
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=card_bd;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+    $pdo = new PDO('mysql:host=localhost;dbname=card_bd;','root','',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+    $pdo -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
 }
 catch(Exception $e)
 {
@@ -15,9 +16,9 @@ if(isset($_GET['session']) && $_GET['session'] == 'destroy'){
         exit();
 }
 
-//variable d'affichage
 
-//
+
+
 
 
 require 'fonction.php';
