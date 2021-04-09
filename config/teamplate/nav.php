@@ -1,34 +1,32 @@
-<nav class="first-nav">
-    <a><h3>Contact</h3></a>
-    <div class="first-nav_field">
-        <?php
-            if (isset($_SESSION['user']))
-            {
-                echo '<a href="profil.php" class="nav-user_pseudo">';
-                echo $_SESSION["user"]["pseudo"];
-                echo '</a>';
-            }
-            else
-            {
-                echo '<a href="login.php"><img src="asset/img/Profil.png" class="profil" alt="profil icon"></a>';
-            }
+    <header>
+        <nav class="first-nav">
+            <h3>Contact</h3>
+            <div class="first-nav_field">
+                <?php if (isset($_SESSION['user'])):?>
+                        <a href="profil.php" class="nav-user_pseudo">
+                            <?=$_SESSION["user"]["pseudo"]?>
+                        </a>
+                <?php else: ?>
+                        <a href="login.php"><img src="asset/img/Profil.webp" class="profil" alt="profil icon"></a>
 
-        ?>
-        <div class="bucket">
-            <a href="bucket.php">
-               <img src="asset/img/bucket.png" alt="bucket icon" class="bucket-icon">
-            </a>
-            <h1>1</h1>
-        </div>
-    </div>
-</nav>
+                <?php endif;?>
+                <div class="bucket">
+                    <a href="bucket.php">
+                        <img src="asset/img/bucket.png" alt="bucket icon" class="bucket-icon">
+                    </a>
+                    <h1><?=nbArticle()?></h1>
+                </div>
+            </div>
+        </nav>
 
-<nav class="second-nav">
-    <a href="index.php"><h1>DeckedUP</h1></a>
-    <ul>
-        <li class="nav-item" id="NBA"> <a>Cartes NBA</a></li>
-        <li class="nav-item" id="NFL"><a>Cartes NFL</a></li>
-        <li class="nav-item" id="about"><a>A propos</a></li>
-        <li class="nav-item" id="back"><a>Retours</a></li>
-    </ul>
-</nav>
+        <nav class="second-nav" role="navigation">
+            <a href="index.php"><h1>DeckedUP</h1></a>
+            <ul>
+                <li class="nav-item" id="NBA"> <a href="index.php">Acceuil</a></li>
+                <li class="nav-item" id="NBA"> Cartes NBA</li>
+                <li class="nav-item" id="NFL">Cartes NFL</li>
+                <li class="nav-item" id="about">A propos</li>
+                <li class="nav-item" id="back">Retours</li>
+            </ul>
+        </nav>
+    </header>
