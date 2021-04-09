@@ -1,4 +1,27 @@
 <?php
+    // class Product{
+    //     private $_img;
+    //     private $_label;
+    //     private $_quantite;
+    //     private $_prix;
+    //     private $_descrip;
+
+    //     public function pseudo(){
+    //         return $this->img;
+    //     }
+    //     public function mdp(){
+    //         return $this->label;
+    //     }
+    //     public function email(){
+    //         return $this->quantite;
+    //     }
+    //     public function gender(){
+    //         return $this->prix;
+    //     }
+    //     public function adress(){
+    //         return $this->descrip;
+    //     }
+    // }
     /**
      * function that check if the password is conform to our rules (regex, string length ...)
      * @param string $password The user's password.
@@ -7,7 +30,6 @@
      * @return bool FALSE if the password ins't conform, or TRUE otherwise
      */
     function check_mdp($password,$conf){
-        $check = false;
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
         $number = preg_match('@[0-9]@', $password);
@@ -25,7 +47,6 @@
      * @return bool FALSE if the pseudo already exist in the database, or TRUE otherwise
      */ 
     function check_pseudo($pseudo,$pdo){
-        $check=true;
         $stmt = $pdo ->prepare('SELECT pseudo FROM tb_user');
         $stmt -> execute();
         $result = $stmt -> fetchAll(PDO::FETCH_NUM);
@@ -51,14 +72,15 @@
     function addUser($pdo,$pseudo,$email,$password,$gender,$adress,$phone,$status){
         $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo -> prepare('INSERT INTO tb_user(pseudo, mdp, email,gender,adresse,tel,statut) VALUES(?,?,?,?,?,?,?)');
-        $stmt -> bindParam(1, $pseudo);
-        $stmt -> bindParam(2, $password);
-        $stmt -> bindParam(3, $email);
-        $stmt -> bindParam(4, $gender);
-        $stmt -> bindParam(5, $adress);
-        $stmt -> bindParam(6, $phone);
-        $stmt -> bindParam(7, $status);
-        $stmt -> execute();
+        $stmt -> execute(array(
+            $pseudo,
+            $password,
+            $email,
+            $gender,
+            $adress,
+            $phone,
+            $status
+        ));
     }
 
     /**
@@ -73,7 +95,7 @@
         $stmt = $pdo -> prepare('SELECT mdp FROM tb_user WHERE pseudo = :pseudo');
         $stmt -> bindParam(':pseudo', $pseudo);
         $stmt -> execute();
-        $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $stmt->fetch();
         $hash = $stmt["mdp"];
         return password_verify($password,$hash);   
     }
@@ -91,14 +113,188 @@
         $stmt = $pdo -> prepare(('SELECT * FROM tb_user WHERE pseudo = :pseudo'));
         $stmt -> bindParam(':pseudo', $pseudo);
         $stmt -> execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch();
         return $result[$user_data];
     }
-    function affichageProduct($pdo,$label,$string)
-    {
-        $stmt = $pdo -> prepare(('SELECT * FROM tb_product WHERE label_produit = ?'));
+    
+    /**
+     * function which show the requested data in product table
+     * @param object $pdo Database connection
+     * @param string $label The product label.
+     * @param string $string The field in Database we want.
+     * 
+     * @return string Returns the data researched if exists.
+     */
+    function affichageAllProduct($pdo){
+        $stmt = $pdo -> prepare('SELECT * FROM tb_product');
+        $stmt -> execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    function showProduct($pdo,$label,$string){
+        $stmt = $pdo -> prepare('SELECT * FROM tb_product as p INNER JOIN tb_stock ON p.label_stock = tb_stock.label_stock WHERE label_produit = ?');
         $stmt -> bindParam(1,$label);
         $stmt -> execute();
-        $stmt = $stmt->fetch();
-        return $stmt[$string];
+        $result = $stmt->fetch();
+        return $result[$string];    
+    }
+
+    /**
+     * Creating a bucket if not exist
+     * @return bool Return TRUE if the bucket already exist or create a Bucket otherwise
+     */
+    function bucketCreation(){
+        if(!isset($_SESSION['panier'])){
+            $_SESSION['panier'] = array();
+            $_SESSION['panier']['libelleProduit'] = array();
+            $_SESSION['panier']['qteProduit'] = array();
+            $_SESSION['panier']['prixProduit'] =array();
+            $_SESSION['panier']['verrou'] = false;
+        }
+        return true;
+    }
+
+    /**
+     * Adding an article in our basket
+     * @param string $labelProduct Label of the product.
+     * @param int $qteProduct quantity of the product.
+     * @param float $price The price of the product.
+     * 
+     * @return void
+     */
+    function addArticle($labelProduct,$qteProduct, $price){
+        if (bucketCreation()){
+            $position = array_search($labelProduct, $_SESSION['panier']['libelleProduit'],true);
+            if($position !== false){
+                $_SESSION['panier']['qteProduit'][$position] += $qteProduct;
+            }
+            else
+            {
+                array_push($_SESSION['panier']['libelleProduit'],$labelProduct);
+                array_push($_SESSION['panier']['qteProduit'], 1);
+                array_push($_SESSION['panier']['prixProduit'], $price);
+            }
+        }
+        else{
+            echo "Un problème est survenu veuillez contacter l'admin du site.";
+        }
+    }
+
+    /**
+     * Delete an article  in the basket
+     * @param string $labelProduct
+     * 
+     * @return void
+     */
+    function deleteArticle($labelProduct){
+        if (bucketCreation()){
+            $tmp = array();
+            $tmp['libelleProduit'] = array();
+            $tmp['qteProduit'] = array();
+            $tmp['prixProduit'] = array();
+            for($i=0;$i<sizeof($_SESSION['panier']['libelleProduit']);$i++){
+                if ($_SESSION['panier']['libelleProduit'][$i] !== $labelProduct){
+                    array_push($tmp['libelleProduit'],$_SESSION['panier']['libelleProduit'][$i]);
+                    array_push($tmp['qteProduit'],$_SESSION['panier']['qteProduit'][$i]);
+                    array_push($tmp['prixProduit'],$_SESSION['panier']['prixProduit'][$i]);
+                }
+            }
+            $_SESSION['panier']=$tmp;
+            unset($tmp);
+        } 
+        else echo "Un problème est survenu veuillez contacter l'administrateur du site.";
+    }
+
+    /**
+     * Calculate the total amount of the basket
+     * @return float
+     */
+    function total(){
+        $sum = 0;
+        for($i=0;$i<sizeof($_SESSION['panier']['libelleProduit']);$i++){
+            $sum += $_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i];
+        }
+        return $sum;
+    }
+
+    /**
+     * calculate the number of different article in our basket
+     * @return int
+     */
+    function nbArticle(){
+        if (isset($_SESSION['panier']))
+            return sizeof($_SESSION['panier']['libelleProduit']);
+        else
+            return 0;
+    }
+    /**
+     * This function update the data on the product enter by the admin
+     * @param object $pdo Database connection.
+     * @param string $label The product label.
+     * @param integer $qte  The product quantity
+     * @param float $price The product price
+     * @param string $descript The description of the product
+     * @param integer $id Id of the product in our database
+     * 
+     * @return void
+     */
+    function updateProduct($pdo,$label,$qte,$price,$descript,$stock,$id){
+        $stmt = $pdo -> prepare('UPDATE tb_product SET label_produit = ?, quantite_produit = ?, prix_produit = ?, descrip_product = ?, label_stock = ? WHERE id_produit = ?');
+        $stmt -> bindParam(1,$label);
+        $stmt -> bindParam(2,$qte);
+        $stmt -> bindParam(3,$price);
+        $stmt -> bindParam(4,$descript);
+        $stmt -> bindParam(5,$stock);
+        $stmt -> bindParam(6,$id);
+        $stmt -> execute();  
+
+    }
+
+    /**
+     * Search a Product in database 
+     * @param object $pdo
+     * @param string $string
+     * 
+     * @return array Return a associative array with all the product which correspond to the search
+     */
+    function search($pdo,$string){
+        $stmt = $pdo -> prepare("SELECT label_produit FROM tb_product WHERE label_produit LIKE '%$string%'");
+        $stmt -> execute();
+        $result = $stmt -> fetchAll();
+        return $result;
+    }
+
+    /**
+     * Delete a product in the database
+     * @param object $pdo
+     * @param string $label
+     * 
+     * @return void
+     */
+    function delete($pdo,$label){
+        $stmt = $pdo -> prepare("DELETE FROM tb_product WHERE label_produit = :label");
+        $stmt -> bindParam(':label',$label);
+        $stmt -> execute();
+    }
+
+    /**
+     * @param object $pdo
+     * @param string $label
+     * @param integer $qte
+     * @param float $price
+     * @param string $descript
+     * @param string $stock
+     * 
+     * @return void
+     */
+    function addProduct($pdo,$label,$qte,$price,$descript,$stock){
+        $stmt = $pdo -> prepare("INSERT INTO tb_product (label_produit, quantite_produit, prix_produit,descrip_product,label_stock) VALUES(?,?,?,?,?)");
+        $stmt -> execute(array(
+            $label,
+            $qte,
+            $price,
+            $descript,
+            $stock
+        ));
     }
