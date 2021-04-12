@@ -2,6 +2,7 @@
             session_start();
             include 'config/teamplate/head.php';
             include 'config/teamplate/nav.php';
+            $manager = new ProductManager($pdo);
         ?>
        
         <div class="container">
@@ -9,24 +10,24 @@
             <div class="card-container">
                 <div class="card">
                     <a href="productLBJ.php?label=Lebron James GOAT Edition">
-                        <img src="<?=showProduct($pdo, "Lebron James GOAT Edition", "img_produit");?>" alt="lebron card" class="pict-card">
+                        <img src="<?=$manager->getList()[0]->img()?>" alt="lebron card" class="pict-card">
                     </a>
-                    <?=(showProduct($pdo, "Lebron James GOAT Edition", "quantite_produit") != 0) ?'<h5 style="color:chartreuse;">'.showProduct($pdo, "Lebron James GOAT Edition", "label_stock").'</h5>' : '<h5 style="color:red;">'.showProduct($pdo, "Lebron James GOAT Edition", "label_stock").'</h5>' ;?>
-                    <h3><?= showProduct($pdo, "Lebron James GOAT Edition", "prix_produit"); ?> €</h3>
+                    <?=($manager->getList()[0]->quantite() != 0) ?'<h5 style="color:chartreuse;">'.$manager->getList()[0]->label_stock().'</h5>' : '<h5 style="color:red;">'.$manager->getList()[0]->label_stock().'</h5>' ;?>
+                    <h3><?= $manager->getList()[0]->prix() ?> €</h3>
                 </div>
                 <div class="card">
                     <a href="productKobe.php?label=Kobe Bryant GOAT Edition">
-                        <img src="<?=showProduct($pdo, "Kobe Bryant GOAT Edition", "img_produit");?>" alt="kobe card" class="pict-card">
+                        <img src="<?=$manager->getList()[1]->img();?>" alt="kobe card" class="pict-card">
                     </a>
-                    <?=(showProduct($pdo, "Kobe Bryant GOAT Edition", "quantite_produit") != 0) ?'<h5 style="color:chartreuse;">'.showProduct($pdo, "Kobe Bryant GOAT Edition", "label_stock").'</h5>' : '<h5 style="color:red;">'.showProduct($pdo, "Kobe Bryant GOAT Edition", "label_stock").'</h5>' ;?>
-                    <h3><?= showProduct($pdo, "Kobe Bryant GOAT Edition", "prix_produit"); ?> €</h3>
+                    <?=($manager->getList()[1]->quantite()!= 0) ?'<h5 style="color:chartreuse;">'.$manager->getList()[1]->label_stock().'</h5>' : '<h5 style="color:red;">'.$manager->getList()[1]->label_stock().'</h5>' ;?>
+                    <h3><?= $manager->getList()[0]->prix();  ?> €</h3>
                 </div>
                 <div class="card">
                     <a href="productKD.php?label=Kevin Durant GOAT Edition">
-                        <img src="<?=showProduct($pdo, "Kevin Durant GOAT Edition", "img_produit");?>" alt=" KD card" class="pict-card">
+                        <img src="<?=$manager->getList()[2]->img();?>" alt=" KD card" class="pict-card">
                     </a>
-                    <?=(showProduct($pdo, "Kevin Durant GOAT Edition", "quantite_produit") != 0) ?'<h5 style="color:chartreuse;">'.showProduct($pdo, "Kevin Durant GOAT Edition", "label_stock").'</h5>' : '<h5 style="color:red;">'.showProduct($pdo, "Kevin Durant GOAT Edition", "label_stock").'</h5>' ;?>
-                    <h3><?= showProduct($pdo, "Kevin Durant GOAT Edition", "prix_produit"); ?> €</h3>
+                    <?=($manager->getList()[2]->quantite() != 0) ?'<h5 style="color:chartreuse;">'.$manager->getList()[2]->label_stock().'</h5>' : '<h5 style="color:red;">'.$manager->getList()[2]->label_stock().'</h5>' ;?>
+                    <h3><?= $manager->getList()[2]->prix() ?> €</h3>
                 </div>
             </div>
             <h2>Les Promotions du moment</h2>

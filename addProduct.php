@@ -2,20 +2,23 @@
     session_start();
     include 'config/teamplate/head.php';
     include 'config/teamplate/nav.php';
+    $manager = new ProductManager($pdo);
     if(isset($_POST['add'])){
         extract($_POST);
-        addProduct($pdo,$label,$qte,$price,$description,$dispo);
+        $product = new Product($_POST);
+        $manager->add($product);
+        header('Location: admin.php');
     }
 ?>
 <body>
 <div class="container">
         <h2>New Product</h2>
         <form method="POST" class="inscription-form">
-            <input type="text" name="label" placeholder="Label">
-            <input type="number" name="qte" placeholder="Quantité">
-            <input type="text" name="price" placeholder="Prix">
-            <input type="textarea" name="description" placeholder="description">
-            <select name="dispo">
+            <input type="text" name="label_produit" placeholder="Label">
+            <input type="number" name="quantite_produit" placeholder="Quantité">
+            <input type="text" name="prix_produit" placeholder="Prix">
+            <input type="textarea" name="descrip_product" placeholder="description">
+            <select name="label_stock">
             <option value="En stock">En Stock</option>
             <option value="Indisponible">Indisponible</option>
             </select>

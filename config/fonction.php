@@ -1,27 +1,139 @@
 <?php
-    // class Product{
-    //     private $_img;
-    //     private $_label;
-    //     private $_quantite;
-    //     private $_prix;
-    //     private $_descrip;
+    class Product{
+        private $_id;
+        private $_img;
+        private $_label;
+        private $_quantite;
+        private $_prix;
+        private $_descrip;
+        private $_label_stock;
 
-    //     public function pseudo(){
-    //         return $this->img;
-    //     }
-    //     public function mdp(){
-    //         return $this->label;
-    //     }
-    //     public function email(){
-    //         return $this->quantite;
-    //     }
-    //     public function gender(){
-    //         return $this->prix;
-    //     }
-    //     public function adress(){
-    //         return $this->descrip;
-    //     }
-    // }
+        public function __construct( array $data)
+        {
+            foreach ($data as $key => $value){
+                $method = 'set'.ucfirst($key);
+                if (method_exists($this,$method))
+                    $this->$method($value);
+            }
+        }
+
+        public function id(){
+            return $this->_id;
+        }
+
+        public function img(){
+            return $this->_img;
+        }
+        public function label(){
+            return $this->_label;
+        }
+        public function quantite(){
+            return $this->_quantite;
+        }
+        public function prix(){
+            return $this->_prix;
+        }
+        public function descrip(){
+            return $this->_descrip;
+        }
+        public function label_stock(){
+            return $this->_label_stock;
+        }
+        public function setId_produit($id){
+            $id = (int) $id;
+            if($id>0){
+                $this->_id = $id;
+            }
+        }
+        public function setImg_produit($img){
+            if (is_string($img)){
+                $this->_img = $img;
+            }
+        }
+        public function setLabel_produit($label){
+            if (is_string($label)){
+                $this->_label = $label;
+            }
+        }
+        public function setQuantite_produit($quantite){
+            $quantite = (int) $quantite;
+            if ($quantite >= 0){
+                $this->_quantite = $quantite;
+            }
+        }
+        public function setPrix_produit($price){
+            $price = (float) $price;
+            if ($price > 0){
+                $this->_prix = $price;
+            }
+        }
+
+        public function setDescrip_product($descript){
+            if (is_string($descript)){
+                $this->_descrip = $descript;
+            }
+        }
+        public function setLabel_stock($label_stock){
+            if(is_string($label_stock))
+                $this->_label_stock = $label_stock;
+        }
+     }
+     class ProductManager{
+         private $_pdo;
+
+         public function __construct($pdo)
+         {
+             $this->setDb($pdo);
+         }
+         public function setDb(PDO $pdo){
+             $this->_pdo = $pdo;
+         }
+         public function add(Product $product){
+            $stmt = $this->_pdo -> prepare("INSERT INTO tb_product (label_produit, quantite_produit, prix_produit,descrip_product,label_stock) VALUES(?,?,?,?,?)");
+            $stmt -> execute(array(
+                $product->label(),
+                $product->quantite(),
+                $product->prix(),
+                $product->descrip(),
+                $product->label_stock()
+            ));
+         }
+         public function delete(Product $product){
+             $stmt = $this->_pdo->prepare("DELETE FROM tb_product WHERE id_produit = :id");
+             $stmt -> bindValue(':id',$product->id());
+             $stmt -> execute();
+         }
+         public function get($id){
+                $stmt = $this->_pdo -> prepare('SELECT * FROM tb_product WHERE label_produit = :label');
+                $stmt -> bindParam(':label',$id);
+                $stmt -> execute();
+                $result = $stmt->fetch();
+                return new Product($result);
+         }
+         public function getList(){
+             $products = [];
+             $stmt = $this->_pdo -> prepare('SELECT * FROM tb_product');
+             $stmt -> execute();
+             $result = $stmt->fetchAll();
+             foreach ($result as $key)
+                $products[] = new Product($key);
+             return $products;
+         }
+
+         public function update(array $data,$id){
+            $id++;
+            $stmt = $this->_pdo -> prepare('UPDATE tb_product SET label_produit = ?, quantite_produit = ?, prix_produit = ?, descrip_product = ?, label_stock = ? WHERE id_produit = ?');
+            $stmt -> execute(array(
+                $data['label'],
+                $data['quantite'],
+                $data['price'],
+                $data['description'],
+                $data['dispo'],
+                $id
+            ));
+         }
+
+     }
     /**
      * function that check if the password is conform to our rules (regex, string length ...)
      * @param string $password The user's password.
