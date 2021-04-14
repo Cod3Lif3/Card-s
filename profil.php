@@ -13,25 +13,25 @@
                 <div class="info-membre">
                     Pseudo
                     <span class="aff-info">
-                        <?=($_SESSION['user']['pseudo']);?>
+                        <?=htmlspecialchars($user->pseudo());?>
                     </span>
                 </div>
             <div class="info-membre">
                 Numéro de Téléphone
                 <span class="aff-info">
-                    <?= affichageUser($pdo, $_SESSION['user']['pseudo'],'tel'); ?>
+                    <?= $user->tel();?>
                 </span>
             </div>
             <div class="info-membre">
                 Adresse Postale
                 <span class="aff-info">
-                    <?= affichageUser($pdo, $_SESSION['user']['pseudo'],'adresse'); ?>
+                    <?= htmlspecialchars($user->adresse());?>
                 </span>
             </div>
             <div class="info-membre">
                 Adresse Email
                 <span class="aff-info">
-                    <?= affichageUser($pdo, $_SESSION['user']['pseudo'],'email'); ?>
+                    <?= $user->email();?>
                 </span>
             </div>
             <a href="?session=destroy"><input type="button" class="destroy-btn" value="Déconnexion"></a>

@@ -11,21 +11,22 @@
                     <button type="submit"  id="previous-btn" class="btn">
                         <img src="asset/img/left-arrow.png" class="img-btn">
                     </button>
-                    <img src="asset/img/KobeGoat1.png" alt="Kobe card" id="first_pict">
-                    <img src="asset/img/KobeGoat2.jpg" alt="Kobe card"  class="second-card-img" id="second_pict">
-                    <img src="asset/img/KobeGoat3.jpg" alt="Kobe card" class="third-card-img" id="third_pict">
+                    <img src="<?= $product->img();?>" alt="Kobe card" id="first_pict">
+                    <img src="<?= $product->second_img();?>" alt="Kobe card"  class="second-card-img" id="second_pict">
+                    <img src="<?= $product->third_img();?>" alt="Kobe card" class="third-card-img" id="third_pict">
                     <button type="submit" id="next-btn" class="btn">
                         <img src="asset/img/right-arrow.png" class="img-btn">
                     </button>
                 </div>
                 <div class="descript">
                     <h3>Description</h3>
-                    <p><?= htmlspecialchars(showProduct($pdo,$_GET['label'], "descrip_product")); ?></p>
+                    <p><?= htmlspecialchars($product->descrip()); ?></p>
                     <h3>Disponibilité</h3>
-                    <p>Il reste actuellement <?= htmlspecialchars(showProduct($pdo,$_GET['label'], "quantite_produit"));?> carte(s) en stocks</p>
+                    <p>Il reste actuellement <?= htmlspecialchars($product->quantite());?> carte(s) en stocks</p>
                     <h3>Prix</h3>
-                    <h3><?= htmlspecialchars(showProduct($pdo, $_GET['label'], "prix_produit")); ?> €</h3>
-                    <a href="?session=panier&label=Kobe Bryant GOAT Edition"><input type="button" value="Ajouter au Panier"></a>
+                    <h3><?= htmlspecialchars($product->prix())?> €</h3>
+                    <a href="?session=panier&label=<?=$product->label();?>"><input type="button" value="Ajouter au Panier"></a>
+                    <?= $content;?>
                 </div>
             </div>
             <div class="Avis">

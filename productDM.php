@@ -1,25 +1,24 @@
 <?php
+    session_start();
     include 'config/teamplate/head.php';
-?>
-<header>
-<?php
     include 'config/teamplate/nav.php';
+    include 'back/traitement_product.php';
 ?>
 </header>
 <div class="container">
-<h2>Donovan Mitchell</h2>
+<h2><?=$product->label();?></h2>
 <div class="container-description">
     <div>
-        <img src="<?=showProduct($pdo, "DM ROOKIE Edition", "img_produit");?>" alt="Donovan card">
+        <img src="<?=$product->img();?>" alt="Donovan card">
     </div>
     <div class="descript">
         <h3>Description</h3>
-        <p><?=showProduct($pdo, "DM ROOKIE Edition", "descrip_product");?></p>
+        <p><?=$product->descrip();?></p>
         <h3>Disponibilité</h3>
-        <p>Il reste actuellement <?=showProduct($pdo, "DM ROOKIE Edition", "quantite_produit");?> carte(s) en stocks</p>
+        <p>Il reste actuellement <?=$product->quantite();?> carte(s) en stocks</p>
         <h3>Prix</h3>
-        <h3><?=showProduct($pdo, "DM ROOKIE Edition", "prix_produit");?>€</h3>
-        <input type="button" value="Ajouter au Panier">
+        <h3><?=$product->prix();?>€</h3>
+        <a href="?session=panier&label=<?=$product->label();?>"><input type="button" value="Ajouter au Panier"></a>
     </div>
 </div>
 <div class="Avis">

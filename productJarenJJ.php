@@ -1,25 +1,23 @@
 <?php
+    session_start();
     include 'config/teamplate/head.php';
-?>
-<header>
-<?php
     include 'config/teamplate/nav.php';
+    include 'back/traitement_product.php';
 ?>
-</header>
 <div class="container">
-<h2>Jaren Jackson Junior</h2>
+<h2><?= $product->label();?></h2>
 <div class="container-description">
     <div>
-        <img src="asset/img/JJJcard 2.png" alt="Jaren JJ card">
+        <img src="<?= $product->img();?>" alt="Jaren JJ card">
     </div>
     <div class="descript">
         <h3>Description</h3>
-        <p>Cette carte Jaren Jackson Junior Rookie Edition est l’une des plus rares dans le monde. Finition en feuilles d’or et plastifiée manuellement, cette carte est sans aucun doute celle qui manque à votre collection</p>
+        <p><?= $product->descrip();?></p>
         <h3>Disponibilité</h3>
-        <p>Il reste actuellement 567 carte(s) en stocks</p>
+        <p>Il reste actuellement <?= $product->quantite();?> carte(s) en stocks</p>
         <h3>Prix</h3>
-        <h3>149.99€</h3>
-        <input type="button" value="Ajouter au Panier">
+        <h3><?= $product->prix();?>€</h3>
+        <a href="?session=panier&label=<?=$product->label();?>"><input type="button" value="Ajouter au Panier"></a>
     </div>
 </div>
 <div class="Avis">

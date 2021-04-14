@@ -25,15 +25,18 @@ include 'back/traitement_admin.php';
     <h2> Vous êtes connectés en tant qu'administrateur</h2>
     <h4> Gestion des stocks</h4>
     <div class="product-container">
-        <?php for ($i = 0; $i < sizeof($manager->getList()); $i++) : ?>
+        <?php for ($i = 0; $i < sizeof($manager->getList()); $i++) : //pour tout les produit dans notre bd?>
             <div class="product-item">
                 <div class="card-container">
                     <div class="card">
-                        <a href="productDM.php?"><img src="<?= $manager->getList()[$i]->img(); ?>" alt="Donovan card" class="pict-card"></a>
+                        <img src="<?= $manager->getList()[$i]->img(); ?>" alt="Donovan card" class="pict-card">
                         <input class="product-btn_img" type="button" value="Change picture">
                     </div>
                 </div>
                 <form class="info-container" method="POST">
+                    <input class="aff-info" type="text" name="img" value="<?= $manager->getList()[$i]->img();?>">
+                    <input class="aff-info" type="text" name="second_img" value="<?= $manager->getList()[$i]->second_img();?>">
+                    <input class="aff-info" type="text" name="third_img" value="<?= $manager->getList()[$i]->third_img();?>">
                     <input class="aff-info" type="text" name="label" value="<?= $manager->getList()[$i]->label() ?>">
                     <input class="aff-info" type="text" name="price" value="<?= $manager->getList()[$i]->prix() ?>">
                     <input class="aff-info" type="text" name="quantite" value="<?= $manager->getList()[$i]->quantite() ?>">
@@ -50,7 +53,6 @@ include 'back/traitement_admin.php';
         <?php endfor; ?>
     </div>
     <a href="addProduct.php">Ajouter</a>
-    <a href="?session=destroy">Déconnexion</a>
     <?php
     include 'config/teamplate/footer.php';
     ?>

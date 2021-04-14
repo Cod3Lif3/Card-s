@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $usermanager = new Manager($pdo);
     if (isset($_SESSION['user']))
     {
         header('location:profil.php?connect=forbidden');
@@ -17,12 +18,16 @@
             $_SESSION['user']['pseudo']=$pseudo;
             $_SESSION['user']['mdp'] = $password;
             $_SESSION['user']['statut']=1;
-            header('location:profil.php');
+            header('location:admin.php');
             exit();
         }
-        else if(check_pseudo($pseudo,$pdo)==true || passwordConnect($password,$pseudo,$pdo)==false)
+        else if($usermanager->check_pseudo($pseudo)===false)
         {
-            $content = '<div class="error" style="color:red;">L\'identifiant ou le mot de passe ne correspondent pas</div>';
+            $content = '<div class="error" style="color:red;">L\'identifiant ne correspond pas</div>';
+        }
+        else if ($usermanager->passwordConnect($pseudo,$password)===false){
+            echo password_hash('aZERTYUIOP!973',PASSWORD_DEFAULT);
+            $content = '<div class="error" style="color:red;">le mot de passe ne correspond pas</div>';
         }
         else
         {

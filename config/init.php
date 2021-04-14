@@ -2,7 +2,7 @@
 // connexion PDO
 try
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=card;','root','aZERTYUIOP_973',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
+    $pdo = new PDO('mysql:host=localhost;dbname=card;','root','',[PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]);
     $pdo -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
 }
 catch(Exception $e)
@@ -11,10 +11,11 @@ catch(Exception $e)
 }
 
 if(isset($_GET['session']) && $_GET['session'] == 'destroy'){
-        session_destroy();
+        session_destroy();// destruction de la super globale $_SESSION
         header('location:login.php');
         exit();
 }
+
 
 
 
